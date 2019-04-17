@@ -1,12 +1,23 @@
+// Step 2 - Add React and ReactDOM.
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Step 8 - Import react and react-redux libraries.
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Step 4 - Create App component and import it.
+import App from './components/App';
+// Step 9 - Import reducers.
+import reducers from './reducers';
+
+// Step 3 - Setup ReactDOM.render().
+ReactDOM.render(
+    // Step 10
+    //  Wrap <App/> component with a <Provider/> component with store property.
+    //  We passing our reducers by using store property.
+    <Provider store={createStore(reducers)}>
+        <App/>
+    </Provider>,
+    document.querySelector('#root')
+);
